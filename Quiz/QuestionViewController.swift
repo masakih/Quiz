@@ -22,7 +22,7 @@ class QuestionViewController: UIViewController {
         didSet { validate() }
     }
     
-    var completor: ((Question, Bool) -> Void)?
+    var completor: ((Question, Question.Answer) -> Void)?
     
     private func validate() {
         
@@ -43,11 +43,11 @@ class QuestionViewController: UIViewController {
     
     @IBAction private func answer(_ button: AnswerButton) {
         
-        guard let q = question, let c = button.answer?.correct else {
+        guard let q = question, let a = button.answer else {
             
             fatalError("Missing Question.")
         }
         
-        completor?(q, c)
+        completor?(q, a)
     }
 }

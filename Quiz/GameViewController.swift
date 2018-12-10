@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
         
         vc.question = gameMaster.next()
         
-        vc.completor = { question, isCorrect in
+        vc.completor = { question, answer in
             
             defer {
                 
@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
                 return
             }
                         
-            if isCorrect {
+            if answer.correct {
                 
                 self.showCorrect(question)
                 
