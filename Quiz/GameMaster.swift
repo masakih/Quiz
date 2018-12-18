@@ -14,9 +14,9 @@ class GameMaster {
     private let count: Int
     private var currentIndex = 0
     
-    var canNext: Bool {
+    var didClear: Bool {
         
-        return currentIndex < count
+        return currentIndex >= count
     }
     
     init(count: Int = 10, _ questionStack: QuestionStack) {
@@ -27,7 +27,7 @@ class GameMaster {
     
     func next() -> Question? {
         
-        guard canNext else { return nil }
+        if didClear { return nil }
         
         currentIndex += 1
         
