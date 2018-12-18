@@ -37,7 +37,7 @@ class GameViewController: UIViewController {
                 vc.dismiss(animated: true, completion: {})
             }
             
-            guard self.gameMaster.canNext else {
+            if self.gameMaster.didClear {
                 
                 self.showCleared()
                 
