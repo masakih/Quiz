@@ -22,16 +22,22 @@ class QuestionViewController: UIViewController {
         didSet { validate() }
     }
     
+    private var allButton: [AnswerButton] {
+        
+        return [button01, button02, button03, button04].compactMap { $0 }
+    }
+    
     var completor: ((Question, Question.Answer) -> Void)?
     
     private func validate() {
         
         questionLabel?.text = question?.text
         
-        button01?.answer = question?.answers[0]
-        button02?.answer = question?.answers[1]
-        button03?.answer = question?.answers[2]
-        button04?.answer = question?.answers[3]
+        zip(allButton, question?.answers)
+            .forEach { button, answer in
+                
+                button.answer = answer
+            }
     }
     
     override func viewDidLoad() {
