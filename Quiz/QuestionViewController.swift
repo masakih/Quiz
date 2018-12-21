@@ -33,7 +33,7 @@ class QuestionViewController: UIViewController {
         
         questionLabel?.text = question?.text
         
-        zip(allButton, question?.answers)
+        zip(allButton, question?.answers ?? [])
             .forEach { button, answer in
                 
                 button.answer = answer
